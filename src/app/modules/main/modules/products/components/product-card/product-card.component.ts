@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { IProduct } from '../../interfaces/product.interface';
 
 @Component({
   selector: 'app-product-card',
@@ -6,16 +7,28 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./product-card.component.scss'],
 })
 export class ProductCardComponent implements OnInit {
-  @Input() product: any;
+  /**
+   * product item
+   */
+  @Input() product!: IProduct;
+
+  /**
+   * productAdded boolean for adding item
+   */
   productAdded: boolean = false;
+
   constructor() {}
 
   ngOnInit() {}
 
+  /**
+   * this simple function created for adding product to cart
+   * @returns void
+   */
   addToCart() {
     this.productAdded = !this.productAdded;
     setTimeout(() => {
       this.productAdded = false;
-    }, 2000);
+    }, 3000);
   }
 }

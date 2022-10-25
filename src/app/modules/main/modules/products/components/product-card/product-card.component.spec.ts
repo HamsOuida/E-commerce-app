@@ -1,8 +1,11 @@
-import { TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { ProductCardComponent } from './product-card.component';
 
 describe('ProductCardComponent', () => {
+  let component: ProductCardComponent;
+  let fixture: ComponentFixture<ProductCardComponent>;
+
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [RouterTestingModule],
@@ -10,9 +13,22 @@ describe('ProductCardComponent', () => {
     }).compileComponents();
   });
 
+  beforeEach(() => {
+    fixture = TestBed.createComponent(ProductCardComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+  });
+
   it('should create the app', () => {
-    const fixture = TestBed.createComponent(ProductCardComponent);
+    fixture = TestBed.createComponent(ProductCardComponent);
+    component = fixture.componentInstance;
     const app = fixture.componentInstance;
     expect(app).toBeTruthy();
+  });
+
+  it('addToCart()', () => {
+    component.productAdded = true;
+    component.addToCart();
+    expect(component.productAdded).toEqual(false);
   });
 });
