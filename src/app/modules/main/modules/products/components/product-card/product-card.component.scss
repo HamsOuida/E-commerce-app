@@ -1,0 +1,39 @@
+.card-container {
+  &__content-data {
+    padding: 0;
+
+    &__product_name {
+      font-size: 1.25rem;
+      font-weight: bold;
+    }
+
+    &__product_price {
+      font-weight: bold;
+      margin-top: 10px;
+    }
+  }
+
+  &__addToCart {
+    padding: 0.25rem 0.5rem;
+    color: gray;
+    font-size: 0.8rem;
+  }
+
+  &__product_stock {
+    font-weight: bold;
+  }
+
+  .p-button.p-button-outlined:enabled:hover {
+    color: gray
+  }
+}
+
+::ng-deep {
+  p-card .p-card-body {
+    padding: 1rem 0.7rem !important;
+
+    .p-card-content {
+      padding: 1rem 0;
+    }
+  }
+}

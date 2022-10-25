@@ -1,0 +1,23 @@
+<p-card class="card-container">
+  <ng-template pTemplate="header">
+    <img alt="Card" class="card-container__header_img" [src]="product?.ProductImg">
+  </ng-template>
+
+  <ng-template pTemplate="content">
+    <div class="card-container__content-data">
+      <div class="card-container__content-data__product_name">{{product?.ProductName}}</div>
+      <div class="card-container__content-data__product_price">${{product?.ProductPrice}}</div>
+
+    </div>
+  </ng-template>
+
+  <ng-template pTemplate="footer">
+    <div class="d-flex align-items-center justify-content-between">
+      <button pButton type="button" [label]="!productAdded ? 'Add to cart' : 'added' "
+       class="p-button-outlined card-container__addToCart"
+       (click)="addToCart()">
+      </button>
+      <div><span class="card-container__product_stock">Stock: </span>{{product?.AvailablePieces}}</div>
+    </div>
+  </ng-template>
+</p-card>
