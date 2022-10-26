@@ -37,4 +37,13 @@ export class ProductsComponent implements OnInit {
   productById(index: number, product: any): number {
     return product.ProductId;
   }
+
+  onChangeQuantity(data: any) {
+    this.productService
+      .editProductQuantity(data.product.ProductId, data.quantity)
+      .subscribe((res) => {
+        let index = this.products.indexOf(data.product);
+        if (index != -1) this.products[index].AvailablePieces = res;
+      });
+  }
 }

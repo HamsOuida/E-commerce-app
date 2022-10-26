@@ -1,1 +1,18 @@
-<router-outlet></router-outlet>
+<div class="app-page row p-0 m-0">
+  <div class="col-sm-3 col-md-3 col-lg-3 app_page__sideBar" *ngIf="showMenu">
+    <app-side-menu (closeSideMenu)="closeMenu($event)"></app-side-menu>
+  </div>
+  <div class="col-sm-9 col-md-9 col-lg-9" [ngClass]="{'col-md-12 col-lg-12' : !showMenu}">
+    <div class="app_page__content">
+      <h2 class="app_page__content__mainColor">
+        <p-button
+          icon="pi pi-bars"
+          class="btnPrimary mx-2"
+          styleClass="p-button-sm"
+          (onClick)="showSideMenu()"
+        ></p-button> Main Dashboard
+      </h2>
+    </div>
+    <router-outlet></router-outlet>
+  </div>
+</div>

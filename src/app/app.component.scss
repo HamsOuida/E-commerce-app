@@ -1,0 +1,12 @@
+.app-page{
+  &__sideBar{
+    width: 300px !important;
+  }
+  &__content{
+    padding: 1.5rem;
+    &__mainColor {
+      color: #25396f;
+    }
+
+  }
+}

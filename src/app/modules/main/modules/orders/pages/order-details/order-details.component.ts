@@ -87,7 +87,7 @@ export class OrderDetailsComponent implements OnInit {
   getPrice() {
     let price = 0;
     const filteredProducts = this.products.filter((elem) =>
-      this.order.Products.find(({ ProductId }) => elem.ProductId === ProductId)
+      this.order?.Products.find(({ ProductId }) => elem.ProductId === ProductId)
     );
     filteredProducts.map((product: IProduct) => {
       this.order.Products.forEach((ele: any) => {
