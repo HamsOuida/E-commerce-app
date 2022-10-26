@@ -12,11 +12,11 @@
       <ng-template pTemplate="header">
           <tr>
               <th>#</th>
-              <th pSortableColumn="code">Order ID <p-sortIcon field="OrderId"></p-sortIcon></th>
-              <th pSortableColumn="category">User <p-sortIcon field="UserId"></p-sortIcon></th>
-              <th pSortableColumn="name">Order Date <p-sortIcon field="OrderDate"></p-sortIcon></th>
-              <th pSortableColumn="price">Total Price <p-sortIcon field="price"></p-sortIcon></th>
-              <th pSortableColumn="quantity">Payment <p-sortIcon field="PaymentType"></p-sortIcon></th>
+              <th>Order ID</th>
+              <th>User</th>
+              <th>Order Date</th>
+              <th>Total Price</th>
+              <th>Payment</th>
               <th>Actions</th>
           </tr>
       </ng-template>
@@ -24,7 +24,7 @@
           <tr>
               <td>{{rowIndex + 1}}</td>
               <td>{{order.OrderId}}</td>
-              <td>{{getUser(order.UserId)}}</td>
+              <td>{{getUserName(order.UserId)}}</td>
               <td>{{order.OrderDate | date:'dd MMMM YYYY'}}</td>
               <td>{{getPrice(order.Products) | currency: 'USD'}}</td>
               <td>{{order.PaymentType}}</td>
@@ -36,7 +36,7 @@
                   </div>
                   <p-overlayPanel #op [appendTo]="myDiv">
                     <ng-template pTemplate>
-                      <p class="action-label"> view</p>
+                      <p  (click)="viewOrder(order)" class="action-label"> view</p>
                     </ng-template>
                   </p-overlayPanel>
                 </div>
