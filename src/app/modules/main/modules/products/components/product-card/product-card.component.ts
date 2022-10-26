@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { IProduct } from '../../interfaces/product.interface';
 
 @Component({
@@ -7,6 +7,7 @@ import { IProduct } from '../../interfaces/product.interface';
   styleUrls: ['./product-card.component.scss'],
 })
 export class ProductCardComponent implements OnInit {
+  @Output() quantityChanged = new EventEmitter();
   /**
    * product item
    */
@@ -30,5 +31,9 @@ export class ProductCardComponent implements OnInit {
     setTimeout(() => {
       this.productAdded = false;
     }, 3000);
+  }
+
+  changeStock(event: any) {
+    this.quantityChanged.emit({ product: this.product, quantity: event.value });
   }
 }
