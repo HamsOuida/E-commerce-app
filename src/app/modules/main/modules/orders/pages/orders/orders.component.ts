@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { IProduct } from '../../../products/interfaces/product.interface';
 import { ProductsService } from '../../../products/services/products.service';
 import { IOrder } from '../../interfaces/order.interface';
@@ -32,7 +33,9 @@ export class OrdersComponent implements OnInit {
   rows = 10;
   constructor(
     private ordersService: OrdersService,
-    private productsService: ProductsService
+    private productsService: ProductsService,
+    private router: Router,
+    private route: ActivatedRoute
   ) {}
 
   ngOnInit(): void {
@@ -79,7 +82,7 @@ export class OrdersComponent implements OnInit {
    * @params userId which the belongs to user
    * @returns user name
    */
-  getUser(userId: string): string {
+  getUserName(userId: string): string {
     let user = this.users.find((user) => user.Id == userId);
     return user?.Name!;
   }
@@ -106,6 +109,16 @@ export class OrdersComponent implements OnInit {
     return Math.ceil(price * 100) / 100;
   }
 
+  /**
+   * this simple function created for viewing order details
+   * @params order, the order which will be displayed
+   * @returns total price of the order
+   */
+  viewOrder(order: IOrder) {
+    this.router.navigate([order.OrderId], {
+      relativeTo: this.route.parent,
+    });
+  }
   /**
    * this simple function created for track product by id
    * @params index, product
