@@ -45,10 +45,7 @@ describe('ProductsComponent', () => {
       component.onChangeQuantity(product);
       fixture.detectChanges();
       fixture.whenStable().then(() => {
-        let selected: IProduct = productsList.find(
-          (ele: IProduct) => ele.ProductId == product.product.ProductId
-        )!;
-        expect(selected.AvailablePieces).toEqual(product.quantity);
+        expect(productsList[0].AvailablePieces).toEqual(product.quantity);
       });
     }));
   });
