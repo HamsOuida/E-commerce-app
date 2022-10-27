@@ -7,7 +7,11 @@ import { IProduct } from '../../interfaces/product.interface';
   styleUrls: ['./product-card.component.scss'],
 })
 export class ProductCardComponent implements OnInit {
+  /**
+   * quantityChanged event emitter
+   */
   @Output() quantityChanged = new EventEmitter();
+
   /**
    * product item
    */
@@ -17,10 +21,6 @@ export class ProductCardComponent implements OnInit {
    * product quantity
    */
   productQuantity: number = 0;
-  /**
-   * productAdded boolean for adding item
-   */
-  productAdded: boolean = false;
 
   constructor() {}
 
