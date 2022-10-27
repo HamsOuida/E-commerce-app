@@ -26,7 +26,19 @@
   &__product_stock {
     font-weight: bold;
   }
+  &__cart{
+    .cart{
+      margin-inline-end: 1rem;
+      cursor: pointer;
+    }
+    .cart-count{
+      cursor: pointer;
+      span{
+        margin-inline: 0.5rem;
+      }
+    }
 
+  }
   .overlay {
     position: absolute;
     top: 0;
@@ -60,6 +72,7 @@
       input{
         width: inherit;
         padding: 0;
+        text-align: center;
       }
     }
   }

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { map } from 'rxjs';
+import { map, Observable } from 'rxjs';
 import { IProduct } from '../interfaces/product.interface';
 
 @Injectable({
@@ -12,15 +12,16 @@ export class ProductsService {
    * this simple function created for getting all products from json file
    * @returns void
    */
-  getProducts() {
-    return this.http.get<[]>('assets/data/products.json');
+  getAllProducts(): Observable<IProduct[]> {
+    return this.http.get<IProduct[]>('assets/data/products.json');
   }
 
   /**
    * this simple function created for editing quantity of product
-   * @returns void
+   * @params productId, new quantity
+   * @returns product quantity updated
    */
-  editProductQuantity(productId: number, quantity: number) {
+  editProductQuantity(productId: number, quantity: number): Observable<any> {
     return this.http.get<[]>('assets/data/products.json').pipe(
       map((response) => {
         let selectedProduct = response.find(

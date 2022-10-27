@@ -23,7 +23,7 @@ export class ProductsComponent implements OnInit {
    * @returns void
    */
   getAllProducts(): IProduct[] {
-    this.productService.getProducts().subscribe((res) => {
+    this.productService.getAllProducts().subscribe((res) => {
       this.products = res;
     });
     return this.products;
@@ -32,13 +32,18 @@ export class ProductsComponent implements OnInit {
   /**
    * this simple function created for track product by id
    * @params index, product
-   * @returns void
+   * @returns product id
    */
-  productById(index: number, product: any): number {
-    return product.ProductId;
+  productById(index: number): number {
+    return index;
   }
 
-  onChangeQuantity(data: any) {
+  /**
+   * this simple function created for updating quantity of the product
+   * @params data value
+   * @returns void
+   */
+  onChangeQuantity(data: any): void {
     this.productService
       .editProductQuantity(data.product.ProductId, data.quantity)
       .subscribe((res) => {

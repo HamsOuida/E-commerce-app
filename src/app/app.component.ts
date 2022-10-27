@@ -16,11 +16,20 @@ export class AppComponent {
     });
   }
 
+  /**
+   * this simple function created for closing side menu
+   * @params event collapse value
+   * @returns menu closed
+   */
   closeMenu(event: any) {
     this.showMenu = event;
   }
 
-  showSideMenu() {
+  /**
+   * this simple function created for toggling side menu
+   * @returns menu toggled
+   */
+  toggleSideMenu() {
     this.showMenu = !this.showMenu;
   }
 }

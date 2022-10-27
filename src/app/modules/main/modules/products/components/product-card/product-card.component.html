@@ -16,10 +16,16 @@
 
   <ng-template pTemplate="footer">
     <div class="d-flex align-items-center justify-content-between">
-      <button pButton type="button" [label]="!productAdded ? 'Add to cart' : 'added' "
-       class="p-button-outlined card-container__addToCart"
-       (click)="addToCart()">
-      </button>
+      <div class="d-flex card-container__cart">
+        <div class="cart" (click)="addToCart()">
+          <em class="pi pi-shopping-cart"></em>
+        </div>
+        <div class="d-flex align-items-center cart-count">
+          <em class="pi pi-minus" (click)="removeFromCart()"></em>
+          <span>{{productQuantity}}</span>
+          <em class="pi pi-plus" (click)="addToCart()"></em>
+        </div>
+      </div>
       <div class="d-flex align-items-center justify-content-between card-container__stock">
         <span class="card-container__product_stock">Stock: </span>
         <p-inputNumber [(ngModel)]="product.AvailablePieces" mode="decimal" (onInput)="changeStock($event)" ></p-inputNumber>
