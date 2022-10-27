@@ -1,0 +1,35 @@
+<p-card class="card-container">
+  <ng-template pTemplate="header">
+    <img alt="Card" class="card-container__header_img" [src]="product?.ProductImg">
+    <div class="overlay" *ngIf="product.AvailablePieces <=10">
+      <div>Almost out of stock</div>
+    </div>
+  </ng-template>
+
+  <ng-template pTemplate="content">
+    <div class="card-container__content-data">
+      <div class="card-container__content-data__product_name">{{product?.ProductName}}</div>
+      <div class="card-container__content-data__product_price">${{product?.ProductPrice}}</div>
+
+    </div>
+  </ng-template>
+
+  <ng-template pTemplate="footer">
+    <div class="d-flex align-items-center justify-content-between">
+      <div class="d-flex card-container__cart">
+        <div class="cart" (click)="addToCart()">
+          <em class="pi pi-shopping-cart"></em>
+        </div>
+        <div class="d-flex align-items-center cart-count">
+          <em class="pi pi-minus" (click)="removeFromCart()"></em>
+          <span>{{productQuantity}}</span>
+          <em class="pi pi-plus" (click)="addToCart()"></em>
+        </div>
+      </div>
+      <div class="d-flex align-items-center justify-content-between card-container__stock">
+        <span class="card-container__product_stock">Stock: </span>
+        <p-inputNumber [(ngModel)]="product.AvailablePieces" mode="decimal" (onInput)="changeStock($event)" ></p-inputNumber>
+      </div>
+     </div>
+  </ng-template>
+</p-card>

@@ -1,0 +1,97 @@
+<section class="order-details">
+  <div *ngIf="order">
+    <div class="order-details__order-details-header">
+      <h3 class="order-details__order-details-header__title">
+        Order Details
+      </h3>
+      <div class="order-details__order-details-header__order-id">#{{order.OrderId}}</div>
+    </div>
+    <div class="order-details__order-details-body">
+      <div class="order-details__order-details-body__content">
+
+        <div class="order-details__order-details-body__content-order_data">
+          <h4>Order Info</h4>
+          <p-card class="mt-4">
+            <ng-template pTemplate="content">
+              <div class="content-data">
+                <div class="data-item">
+                  <span class="col-head">ID:</span>
+                  <span class="col-data">#{{order.OrderId}}</span>
+                </div>
+                <div class="data-item">
+                  <span class="col-head">Order Placed:</span>
+                  <span class="col-data">{{order.OrderDate | date:'dd MMMM yyyy'}}</span>
+                </div>
+                <div class="data-item">
+                  <span class="col-head">Total Price:</span>
+                  <span class="col-data">{{getPrice()}}</span>
+                </div>
+                <div class="data-item">
+                  <span class="col-head">Ship To:</span>
+                  <span class="col-data">{{user?.Address}}</span>
+                </div>
+              </div>
+            </ng-template>
+          </p-card>
+        </div>
+
+        <div class="order-details__order-details-body__content-user_data">
+          <h4>User Info</h4>
+          <p-card class="mt-4">
+            <ng-template pTemplate="content">
+              <div class="content-data">
+                <div class="data-item">
+                  <span class="col-head">ID:</span>
+                  <span class="col-data">{{user?.Id}}</span>
+                </div>
+                <div class="data-item">
+                  <span class="col-head">Name:</span>
+                  <span class="col-data">{{user?.Name}}</span>
+                </div>
+                <div class="data-item">
+                  <span class="col-head">Phone:</span>
+                  <span class="col-data">{{user?.Phone}}</span>
+                </div>
+                <div class="data-item">
+                  <span class="col-head">Email:</span>
+                  <span class="col-data">{{user?.Email}}</span>
+                </div>
+                <div class="data-item">
+                  <span class="col-head">Address:</span>
+                  <span class="col-data">{{user?.Address}}</span>
+                </div>
+              </div>
+            </ng-template>
+          </p-card>
+        </div>
+
+        <div class="order-details__order-details-body__content-products_data mt-4">
+          <h4>Products</h4>
+          <p-card *ngFor="let product of orderProducts" class="mt-4">
+            <ng-template pTemplate="content">
+              <div class="content-data">
+                <div>
+                  <div>Item</div>
+                  <div class="d-flex align-items-center mt-2">
+                    <img alt="Card" class="product_img" [src]="product?.ProductImg">
+                    <div class="product_name">{{product?.ProductName}}</div>
+                  </div>
+                </div>
+                <div class="item">
+                  <div>Price</div>
+                  <div class="product_price">${{product?.ProductPrice}}</div>
+                </div>
+                <div class="item">
+                  <div>quantity</div>
+                  <div class="product_price">{{product?.Quantity}}</div>
+                </div>
+
+              </div>
+            </ng-template>
+          </p-card>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>

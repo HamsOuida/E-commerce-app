@@ -1,0 +1,117 @@
+.order-details {
+  padding: 3rem 2rem;
+  width: 80%;
+  margin: auto;
+
+  @media only screen and (max-width: 600px) {
+    width: 100%;
+  }
+
+  &__order-details-header {
+    display: flex;
+    align-items: center;
+    &__order-id {
+      margin-inline-start: 1rem;
+    }
+  }
+
+  &__order-details-body {
+    &__content {
+      background-color: #fff;
+      box-shadow: 0 2px 1px -1px rgb(0 0 0 / 20%), 0 1px 1px 0 rgb(0 0 0 / 14%),
+        0 1px 3px 0 rgb(0 0 0 / 12%);
+      border-radius: 6px;
+      padding: 2rem;
+
+      &-order_data {
+        .content-data {
+          .data-item {
+            margin-bottom: 1rem;
+
+            .col-head {
+              font-weight: 500;
+            }
+
+            .col-data {
+              margin-inline-start: 10px;
+              color: gray;
+              overflow-wrap: break-word
+            }
+          }
+        }
+      }
+
+      &-user_data {
+        .content-data {
+          .data-item {
+            margin-bottom: 1rem;
+
+            .col-head {
+              font-weight: 500;
+            }
+
+            .col-data {
+              margin-inline-start: 10px;
+              color: gray;
+              overflow-wrap: break-word
+            }
+          }
+        }
+      }
+
+      &-products_data {
+        .content-data {
+          display: flex;
+          justify-content: space-between;
+          @media only screen and (max-width: 700px) {
+            flex-direction: column;
+          }
+
+          .product_img {
+            width: 80px;
+            height: 80px;
+            img {
+              width: 100%;
+              height: 100%;
+            }
+          }
+
+          .product_name {
+            margin-inline-start: 1rem;
+            font-weight: bold;
+          }
+          .product_price {
+            margin-top: 2rem;
+            @media only screen and (max-width: 700px) {
+              margin-top: 0.5rem;
+            }
+          }
+          .item{
+            @media only screen and (max-width: 700px) {
+             display: flex;
+             justify-content: space-between;
+             align-items: center;
+            }
+
+          }
+        }
+      }
+    }
+  }
+}
+
+::ng-deep {
+  p-card {
+    .p-card {
+      margin-bottom: 2rem;
+    }
+
+    .p-card-body {
+      padding: 0rem 0.7rem !important;
+
+      .p-card-content {
+        padding: 1rem;
+      }
+    }
+  }
+}

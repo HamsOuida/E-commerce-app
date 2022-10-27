@@ -1,0 +1,13 @@
+.products-page{
+  padding: 3rem 2rem;
+  &__products-title{
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+    margin-inline-start: 1rem;
+  }
+  &__products-count{
+    font-size: 0.75rem;
+    font-weight: normal;
+  }
+}

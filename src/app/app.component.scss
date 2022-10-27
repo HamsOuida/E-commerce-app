@@ -1,0 +1,15 @@
+.app-page{
+  &__sideBar{
+    width: 300px !important;
+  }
+  &__contentSection{
+    padding-inline-start: 2rem;
+    margin-top: 2rem;
+    &__content{
+      padding: 1.5rem;
+      &__mainColor {
+        color: #25396f;
+      }
+    }
+  }
+}
