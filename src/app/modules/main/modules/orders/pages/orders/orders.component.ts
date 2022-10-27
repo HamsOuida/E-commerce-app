@@ -71,7 +71,7 @@ export class OrdersComponent implements OnInit {
    * @returns products list
    */
   getAllProducts(): IProduct[] {
-    this.productsService.getProducts().subscribe((res) => {
+    this.productsService.getAllProducts().subscribe((res) => {
       this.products = res;
     });
     return this.products;
@@ -114,17 +114,9 @@ export class OrdersComponent implements OnInit {
    * @params order, the order which will be displayed
    * @returns total price of the order
    */
-  viewOrder(order: IOrder) {
+  viewOrder(order: IOrder): void {
     this.router.navigate([order.OrderId], {
       relativeTo: this.route.parent,
     });
-  }
-  /**
-   * this simple function created for track product by id
-   * @params index, product
-   * @returns void
-   */
-  orderById(index: number, order: any): number {
-    return order.OrderId;
   }
 }

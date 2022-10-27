@@ -3,7 +3,7 @@
     <span class="products-page__products-count">{{products.length}} products found</span>
   </div>
   <div class="row m-0 p-0">
-    <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 mb-4" *ngFor="let product of products; trackBy:productById">
+    <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 mb-4" *ngFor="let product of products; trackBy:productById; let i = index">
       <app-product-card [product]="product" (quantityChanged)="onChangeQuantity($event)"></app-product-card>
     </div>
   </div>

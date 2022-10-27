@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { IProduct } from '../../../products/interfaces/product.interface';
 import { ProductsService } from '../../../products/services/products.service';
 import { IOrder } from '../../interfaces/order.interface';
@@ -43,11 +43,16 @@ export class OrderDetailsComponent implements OnInit {
     this.getAllProducts();
   }
 
-  get getID() {
+  get getID(): number {
     return this.activateRoute.snapshot.params['id'];
   }
 
-  getOrder(orderId: number) {
+  /**
+   * this simple function created for get order by id
+   * @params orderId, id of the order
+   * @returns order
+   */
+  getOrder(orderId: number): void {
     this.ordersService.getOrderById(orderId).subscribe((res: any) => {
       this.order = res;
       this.getUser(this.order.UserId);
@@ -58,8 +63,8 @@ export class OrderDetailsComponent implements OnInit {
    * this simple function created for getting all products
    * @returns products list
    */
-  getAllProducts() {
-    this.productsService.getProducts().subscribe((res) => {
+  getAllProducts(): void {
+    this.productsService.getAllProducts().subscribe((res) => {
       this.products = res;
       this.getOrderProducts();
     });
@@ -69,12 +74,14 @@ export class OrderDetailsComponent implements OnInit {
    * this simple function created for get all items of order
    * @returns order items
    */
-  getOrderProducts() {
-    this.orderProducts = this.products.filter((elem) =>
-      this.order.Products.find(({ ProductId }) => elem.ProductId === ProductId)
+  getOrderProducts(): void {
+    this.orderProducts = this.products?.filter((elem) =>
+      this.order?.Products?.find(
+        ({ ProductId }) => elem.ProductId === ProductId
+      )
     );
-    this.orderProducts.map((product: any) => {
-      product.Quantity = this.order.Products.find(
+    this.orderProducts?.map((product: any) => {
+      product.Quantity = this.order?.Products.find(
         ({ ProductId }) => product.ProductId === ProductId
       )?.Quantity;
     });
@@ -84,13 +91,15 @@ export class OrderDetailsComponent implements OnInit {
    * this simple function created for get total price of order
    * @returns total price of the order
    */
-  getPrice() {
+  getPrice(): number {
     let price = 0;
-    const filteredProducts = this.products.filter((elem) =>
-      this.order?.Products.find(({ ProductId }) => elem.ProductId === ProductId)
+    const filteredProducts = this.products?.filter((elem) =>
+      this.order?.Products?.find(
+        ({ ProductId }) => elem.ProductId === ProductId
+      )
     );
-    filteredProducts.map((product: IProduct) => {
-      this.order.Products.forEach((ele: any) => {
+    filteredProducts?.map((product: IProduct) => {
+      this.order.Products?.forEach((ele: any) => {
         if (ele.ProductId == product.ProductId) {
           price += product.ProductPrice * ele.Quantity;
         }
@@ -102,9 +111,9 @@ export class OrderDetailsComponent implements OnInit {
   /**
    * this simple function created for get user who created the order
    * @params userId which the belongs to user
-   * @returns user name
+   * @returns user
    */
-  getUser(userId: string) {
+  getUser(userId: string): void {
     this.ordersService.getUserById(userId).subscribe((res: any) => {
       this.user = res;
     });

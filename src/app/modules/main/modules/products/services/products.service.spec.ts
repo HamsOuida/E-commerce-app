@@ -1,5 +1,5 @@
 import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { TestBed } from '@angular/core/testing';
+import { async, TestBed } from '@angular/core/testing';
 import { IProduct } from '../interfaces/product.interface';
 
 import { ProductsService } from './products.service';
@@ -30,13 +30,24 @@ describe('ProductsService', () => {
     expect(service).toBeTruthy();
   });
 
-  describe('getProducts()', () => {
-    it('should return all products list ', () => {
-      let mock: IProduct[] = [];
-      service.getProducts().subscribe((res) => {
-        mock = res;
-        expect(mock.length).toBeGreaterThan(0);
+  describe('getAllProducts()', () => {
+    it('should return all products list ', (done: DoneFn) => {
+      service.getAllProducts().subscribe((value) => {
+        expect(value.length).toEqual(20);
+        done();
       });
+    });
+  });
+
+  describe('editProductQuantity()', () => {
+    it('should change product quantity ', (done: DoneFn) => {
+      const product = { ProductId: 123, quantity: 100 };
+      service
+        .editProductQuantity(product.ProductId, product.quantity)
+        .subscribe((res) => {
+          expect(product.quantity).toEqual(res);
+          done();
+        });
     });
   });
 });

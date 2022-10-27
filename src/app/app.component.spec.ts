@@ -20,14 +20,25 @@ describe('AppComponent', () => {
   });
 
   it('should create the app', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app).toBeTruthy();
+    expect(component).toBeTruthy();
   });
 
   it(`should have as title 'e-commerce-app'`, () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app.title).toEqual('e-commerce-app');
+    expect(component.title).toEqual('e-commerce-app');
+  });
+
+  describe('closeMenu', () => {
+    it(`should close the side menu`, () => {
+      component.closeMenu(false);
+      expect(component.showMenu).toEqual(false);
+    });
+  });
+
+  describe('toggleSideMenu', () => {
+    it(`should toggle the side menu`, () => {
+      component.showMenu = true;
+      component.toggleSideMenu();
+      expect(component.showMenu).toEqual(false);
+    });
   });
 });
